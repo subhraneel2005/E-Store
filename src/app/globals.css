@@ -60,13 +60,22 @@
       @apply border-border;
     }
     body {
-      background: linear-gradient(to right, #ff9a9e, #fad0c4, #fad0c4, #a1c4fd);
-      background-size: 400% 400%;
-      animation: gradientAnimation 15s ease infinite;
+      background: rgb(2,0,36);
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,107,1) 43%, rgba(121,9,107,1) 52%, rgba(81,0,255,1) 100%);
       margin: 0;
       padding: 0;
       font-family: "Poppins", sans-serif;
       font-weight: 400;
       font-style: normal;
     }
+  }
+
+  .card{
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  }
+
+  .nav{
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
   }

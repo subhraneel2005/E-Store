@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <div className='h-auto w-auto flex justify-center items-center'>
         <img className="w-[50%] h-52 overflow-hidden" src={image} alt={title} />
         </div>
-      <div className="px-6 py-4 h-full bg-gray-300">
+      <div className="px-6 py-4 h-full card">
         <h2 className="font-bold text-xl mb-2">{title}</h2>
         {/* <p className="text-gray-700 text-base mb-2">{description}</p> */}
         <p className="text-sm text-gray-700 mb-2">Brand: {brand}</p>
