@@ -1,48 +1,76 @@
-"use client"
+"use client";
 
 import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
-import { usePathname } from 'next/navigation';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaSearch } from 'react-icons/fa';
 
 const Navbar = () => {
-
   const { user, isSignedIn } = useUser();
 
   return (
-    <nav className="nav w-full">
+    <nav className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex">
-            <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="text-2xl font-bold text-gray-900">
-                E-Store 🛒
-              </Link>
-            </div>
-            <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-              <Link href="/electronics" className="border-transparent text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center">
+            <Link href="/" className="text-2xl font-bold text-yellow-500">
+              E-Store 🛒
+            </Link>
+            <div className="hidden md:flex md:space-x-6 ml-6">
+              {user && <Link href="/dashboard" className="hover:text-yellow-500 text-[13px]">
+                Admin Dashboard
+              </Link>}
+              <Link href="/electronics" className="hover:text-yellow-500 text-[13px]">
                 Electronics
               </Link>
-              <Link href="/home-decoration" className="border-transparent text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
+              <Link href="/home-decoration" className="hover:text-yellow-500 text-[13px]">
                 Home Decoration
               </Link>
-              <Link href="/beauty-products" className="border-transparent text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
+              <Link href="/beauty-products" className="hover:text-yellow-500 text-[13px]">
                 Beauty Products
-              </Link>
-              <Link href="/fashion" className="border-transparent text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
-                Fashion
               </Link>
               {/* Add more categories as needed */}
             </div>
           </div>
-          <div className="flex items-center space-x-6">
-            <Link href="/cart" className="text-gray-200">
+          <div className="flex items-center space-x-4">
+            <div className="hidden sm:flex items-center bg-white rounded-md overflow-hidden">
+              <input
+                type="text"
+                placeholder="Search"
+                className="px-4 py-2 w-80 text-black"
+              />
+              <button className="bg-yellow-500 px-4 py-2">
+                <FaSearch className="text-gray-900" />
+              </button>
+            </div>
+            <Link href="/cart" className="text-white relative">
               <FaShoppingCart className="h-6 w-6" aria-hidden="true" />
+              {/* Add a cart counter badge here if needed */}
             </Link>
-            {
-              isSignedIn ? <UserButton/> : <Link href={"/sign-in"} className=' font-bold text-white'>Login</Link>
-            }
+            {isSignedIn ? (
+              <UserButton />
+            ) : (
+              <Link href="/sign-in" className="font-bold hover:text-yellow-500">
+                Login
+              </Link>
+            )}
           </div>
+        </div>
+      </div>
+      <div className="bg-gray-800 py-2 md:hidden">
+        <div className="flex justify-center space-x-4">
+          <Link href="/electronics" className="hover:text-yellow-500">
+            Electronics
+          </Link>
+          <Link href="/home-decoration" className="hover:text-yellow-500">
+            Home Decoration
+          </Link>
+          <Link href="/beauty-products" className="hover:text-yellow-500">
+            Beauty Products
+          </Link>
+          <Link href="/fashion" className="hover:text-yellow-500">
+            Fashion
+          </Link>
+          {/* Add more categories as needed */}
         </div>
       </div>
     </nav>

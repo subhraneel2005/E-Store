@@ -60,10 +60,7 @@
       @apply border-border;
     }
     body {
-      background: rgb(2,0,36);
-      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,107,1) 43%, rgba(121,9,107,1) 52%, rgba(81,0,255,1) 100%);
-      margin: 0;
-      padding: 0;
+      
       font-family: "Poppins", sans-serif;
       font-weight: 400;
       font-style: normal;
