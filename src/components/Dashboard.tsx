@@ -170,7 +170,7 @@ function Dashboard() {
             <TableBody>
               {products.map((product) => (
                 <TableRow key={product.id}>
-                  <TableCell className="font-medium">{product.price}</TableCell>
+                  <TableCell className="font-medium">₹{product.price}</TableCell>
                   <TableCell>{product.name}</TableCell>
                   <TableCell className="text-right flex justify-end space-x-4">
                     <Popover>

@@ -1,5 +1,8 @@
+"use client"
+
 import React from 'react';
 import { productsData } from '@/components/products';
+import { useRouter } from 'next/navigation';
 
 interface ProductParams {
     id: string; // Adjusted to number type
@@ -11,9 +14,14 @@ interface SingleProductPageProps {
 
 const SingleProductPage: React.FC<SingleProductPageProps> = ({ params }) => {
     const { id } = params;
-
+    
+    const router = useRouter();
     // Find the product by matching id (converted to number) with _id
     const product = productsData.find(d => d._id === parseInt(id, 10));
+
+    const paymentHandler = (id:number) => {
+        router.push(`/payments/${id}`);
+    }
 
     if (!product) {
         return <h1 className="text-3xl font-bold text-center mt-8">Product not found</h1>;
@@ -38,7 +46,7 @@ const SingleProductPage: React.FC<SingleProductPageProps> = ({ params }) => {
                         <div className="text-sm text-gray-500 mb-2">Brand: {product.brand}</div>
                         <div className="text-sm text-gray-500">Category: {product.category}</div>
                         <div className="mt-6 flex justify-between px-3 items-center">
-                            <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            <button onClick={() => paymentHandler(product._id)} className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 Buy Now
                             </button>
                             <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
